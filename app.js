@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let passport = require('passport');
 
-mongoose.connect('mongodb://projecten3studserver03.westeurope.cloudapp.azure.com/mindfulnessdb', { useNewUrlParser: true });
+mongoose.connect('mongodb://projecten3studserver03.westeurope.cloudapp.azure.com/artisthuntdb', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 
 //MODELS
