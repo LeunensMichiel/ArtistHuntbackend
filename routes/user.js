@@ -5,6 +5,8 @@ let mongoose = require('mongoose');
 let jwt = require('express-jwt');
 let auth = jwt({secret: process.env.ARTISTHUNT_BACKEND_SECRET});
 let validator = require("email-validator");
+let passport = require("passport");
+
 
 
 
