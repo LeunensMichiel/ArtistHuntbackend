@@ -13,12 +13,14 @@ mongoose.set('useFindAndModify', false);
 
 //MODELS
 require('./models/user');
+require('./models/post');
 
 
 require('./config/passport');
 
 //routes
 let userRouter = require('./routes/user');
+let postRouter = require('./routes/posts');
 
 let app = express();
 
@@ -31,6 +33,7 @@ app.use(passport.initialize());
 
 // use Routes
 app.use('/API/users', userRouter);
+app.use('/API/posts', postRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

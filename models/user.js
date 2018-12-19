@@ -9,7 +9,11 @@ let UserSchema = new mongoose.Schema({
     hash: String,
     salt: String,
     validation_code: String,
-    profile_image_filename: String
+    profile_image_filename: String,
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'post'
+    }]
 });
 
 UserSchema.index({email: 1});
