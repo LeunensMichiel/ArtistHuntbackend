@@ -36,7 +36,7 @@ router.param('user', function (req, res, next, id) {
 
 router.get('/post', auth, function (req, res, next) {
     let findallquery = Post.find();
-    query.exec(function (err, posts) {
+    findallquery.exec(function (err, posts) {
         if (err) {
             return next(err);
         }
@@ -65,3 +65,5 @@ router.post('/post', auth, function (req, res, next) {
         });
     })
 });
+
+module.exports = router;
