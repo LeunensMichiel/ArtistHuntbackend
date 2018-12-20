@@ -33,7 +33,7 @@ app.use(passport.initialize());
 
 // use Routes
 app.use('/API/users', userRouter);
-app.use('/API/posts', postRouter);
+app.use('/API/post', postRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
