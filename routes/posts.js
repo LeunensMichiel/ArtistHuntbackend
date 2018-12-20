@@ -24,7 +24,7 @@ router.param('post', function (req, res, next, id) {
 });
 
 router.param('user', function (req, res, next, id) {
-    let query = User.findById(id);
+    let query = User.findById(id).populate('posts');
     query.exec(function (err, user) {
         if (err) {
             return next(err);
