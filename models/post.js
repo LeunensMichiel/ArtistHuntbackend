@@ -7,7 +7,7 @@ let PostSchema = new mongoose.Schema({
     type: String,
     post_image_filename: String,
     post_audio_filename: String,
-    date: { type: Date, default: Date.now }
+    date: String
 });
 
 PostSchema.index({user_id: 1});
