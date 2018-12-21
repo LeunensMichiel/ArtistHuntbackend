@@ -1,12 +1,16 @@
 let express = require('express');
 let router = express.Router();
 let mongoose = require('mongoose');
+const multer = require('multer');
 
 let Post = mongoose.model('post');
 let User = mongoose.model('user');
 
 let jwt = require('express-jwt');
 let auth = jwt({secret: process.env.ARTISTHUNT_BACKEND_SECRET});
+
+let fileUploadMulter = require('../config/multer_config');
+let fileManager = require('../config/manage_files');
 
 router.param('post', function (req, res, next, id) {
    let query = Post.findById(id);
@@ -47,6 +51,7 @@ router.get('/post', auth, function (req, res, next) {
 router.get('/post/:user', auth, function (req, res, next) {
     res.json(req.userParam.posts);
 });
+
 router.post('/post', auth, function (req, res, next) {
     let post = new Post(req.body);
     post.save(function (err, post) {
@@ -64,6 +69,78 @@ router.post('/post', auth, function (req, res, next) {
             res.json(post);
         });
     })
+});
+
+router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single("post_file"), function (req, res, next) {
+
+    if (!req.file) {
+        return next(new Error("Wrong file type!"));
+    }
+
+    let postQuery = Post.findOneAndUpdate(
+        {_id: req.params.post_with_audio},
+        {$set: {"post_audio_filename": req.file.filename}},
+        {new: true}
+    );
+
+    postQuery.exec(function (err, post) {
+        if (err) {
+            return next(err);
+        }
+
+        let oldPost = JSON.parse(req.body.post);
+
+        if (oldPost.post_audio_filename) {
+            fileManager.removeFile(oldPost.post_audio_filename, "music");
+        }
+
+        res.json(post);
+    });
+});
+
+router.put('/post/:post_with_image', auth, fileUploadMulter.uploadPostImage.single("page_file"), function (req, res, next) {
+
+    if (!req.file) {
+        return next(new Error("Wrong file type!"));
+    }
+
+    let postQuery = Post.findOneAndUpdate(
+        {_id: req.params.post_with_image},
+        {$set: {"post_image_filename": req.file.filename}},
+        {new: true}
+    );
+
+
+    postQuery.exec(function (err, post) {
+        if (err) {
+            return next(err);
+        }
+
+        let oldPost = JSON.parse(req.body.post);
+
+        if (oldPost.post_image_filename) {
+            fileManager.removeFile(oldPost.post_image_filename, "images");
+        }
+
+        res.json(post);
+    });
+});
+
+router.delete('/post/:post', auth, function (req, res, next) {
+    req.post.remove(function (err, post) {
+        if (err) return next(err);
+
+        if (post.post_audio_filename) {
+            fileManager.removeFile(post.post_audio_filename, "music");
+        }
+        if (post.post_image_filename) {
+            fileManager.removeFile(post.post_image_filename, "images");
+        }
+
+        res.json({'message': 'Delete was successful'});
+
+    });
+
 });
 
 module.exports = router;
