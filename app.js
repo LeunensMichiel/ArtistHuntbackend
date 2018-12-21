@@ -8,6 +8,8 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 let passport = require('passport');
 
+let fs = require('fs');
+
 mongoose.connect('mongodb://projecten3studserver03.westeurope.cloudapp.azure.com/artisthuntdb', { useNewUrlParser: true });
 mongoose.set('useFindAndModify', false);
 

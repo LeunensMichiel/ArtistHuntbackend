@@ -1,0 +1,1 @@
+This map will be used for image uploading
