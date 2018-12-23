@@ -105,7 +105,8 @@ router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single(
 
 router.post('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
     console.log("Wuk1");
-    if (!req.files) {
+    console.log(req.file);
+    if (!req.file) {
         console.log("Wuk2");
         return next(new Error("Wrong file type!"));
     }
