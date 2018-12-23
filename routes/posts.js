@@ -13,18 +13,18 @@ let fileUploadMulter = require('../config/multer_config');
 let fileManager = require('../config/manage_files');
 
 router.param('post', function (req, res, next, id) {
-   let query = Post.findById(id);
+    let query = Post.findById(id);
 
-   query.exec(function (err, post) {
-      if (err) {
-          return next(err)
-      }
-      if (!post) {
-          return next(new Error('Post not found' + id));
-      }
-      req.post = post;
-      return next();
-   });
+    query.exec(function (err, post) {
+        if (err) {
+            return next(err)
+        }
+        if (!post) {
+            return next(new Error('Post not found' + id));
+        }
+        req.post = post;
+        return next();
+    });
 });
 
 router.param('user', function (req, res, next, id) {
@@ -61,7 +61,7 @@ router.post('/post', auth, function (req, res, next) {
         let queryUpdateUserWithPost = User.updateOne({_id: req.body.user_id},
             {"$push": {posts: post}});
 
-        queryUpdateUserWithPost.exec(function(err, user){
+        queryUpdateUserWithPost.exec(function (err, user) {
             if (err) {
                 post.remove();
                 return next(err)
@@ -71,7 +71,7 @@ router.post('/post', auth, function (req, res, next) {
     })
 });
 
-router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single("post_file"), function (req, res, next) {
+router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single("file"), function (req, res, next) {
 
     if (!req.file) {
         return next(new Error("Wrong file type!"));
@@ -98,30 +98,30 @@ router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single(
     });
 });
 
-router.put('/post/:post_with_image', auth, fileUploadMulter.uploadPostImage.single("page_file"), function (req, res, next) {
+router.post('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
 
     if (!req.file) {
         return next(new Error("Wrong file type!"));
     }
 
-    let postQuery = Post.findOneAndUpdate(
-        {_id: req.params.post_with_image},
-        {$set: {"post_image_filename": req.file.filename}},
-        {new: true}
+    let tempPost = JSON.parse(req.body.post);
+    let post = new Post(tempPost);
+
+    post.post_image_filename = req.file.filename;
+
+    let updateUserQuery = User.updateOne(
+        {_id: post.user_id}, {"$push": {posts: post}}
     );
 
-
-    postQuery.exec(function (err, post) {
+    updateUserQuery.exec(function (err, post) {
         if (err) {
+            post.remove();
             return next(err);
         }
 
-        let oldPost = JSON.parse(req.body.post);
-
-        if (oldPost.post_image_filename) {
-            fileManager.removeFile(oldPost.post_image_filename, "images");
+        if (tempPost.post_image_filename) {
+            fileManager.removeFile(tempPost.post_image_filename, "images");
         }
-
         res.json(post);
     });
 });
