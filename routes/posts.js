@@ -104,47 +104,47 @@ router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single(
 });
 
 router.post('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
-    console.log(req);
     console.log("Wuk1");
     if (!req.file) {
         console.log("Wuk2");
-
         return next(new Error("Wrong file type!"));
     }
     console.log("Wuk3");
-
     let tempPost = JSON.parse(req.body.post);
     console.log("Wuk4");
-
     let post = new Post(tempPost);
     console.log("Wuk5");
-
     post.post_image_filename = req.file.filename;
     console.log("Wuk6");
 
-    let updateUserQuery = User.updateOne(
-        {_id: post.user_id}, {"$push": {posts: post}}
-    );
-    console.log("Wuk7");
-
-    updateUserQuery.exec(function (err, post) {
+    post.save(function (err, post) {
+        console.log("WukExtra");
         if (err) {
-            console.log("Wuk8");
-
-            post.remove();
+            console.log(err);
             return next(err);
         }
-        console.log("Wuk9");
+        let updateUserQuery = User.updateOne(
+            {_id: post.user_id}, {"$push": {posts: post}}
+        );
+        console.log("Wuk7");
 
-        if (tempPost.post_image_filename) {
-            console.log("Wuk10");
+        updateUserQuery.exec(function (err, post) {
+            if (err) {
+                console.log("Wuk8");
 
-            fileManager.removeFile(tempPost.post_image_filename, "images");
-        }
-        console.log("Wuk1");
-
-        res.json(post);
+                post.remove();
+                return next(err);
+            }
+            console.log("Wuk9");
+            if (tempPost.post_image_filename) {
+                console.log("Wuk10");
+                fileManager.removeFile(tempPost.post_image_filename, "images");
+            }
+            console.log("Wuk1");
+            res.json(post);
+        });
     });
+
 });
 
 router.delete('/post/:post', auth, function (req, res, next) {
