@@ -72,25 +72,30 @@ router.post('/post', auth, function (req, res, next) {
 });
 
 router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single("file"), function (req, res, next) {
-
+    console.log("Wuk1");
     if (!req.file) {
+        console.log("Wuk2");
         return next(new Error("Wrong file type!"));
     }
-
+    console.log("Wuk3");
     let postQuery = Post.findOneAndUpdate(
         {_id: req.params.post_with_audio},
         {$set: {"post_audio_filename": req.file.filename}},
         {new: true}
     );
-
+    console.log("Wuk4");
     postQuery.exec(function (err, post) {
         if (err) {
+            console.log("Wuk5");
             return next(err);
         }
+        console.log("Wuk6");
 
         let oldPost = JSON.parse(req.body.post);
+        console.log("Wuk7");
 
         if (oldPost.post_audio_filename) {
+            console.log("Wuk8");
             fileManager.removeFile(oldPost.post_audio_filename, "music");
         }
 
@@ -99,29 +104,44 @@ router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single(
 });
 
 router.post('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
-
+    console.log("Wuk1");
     if (!req.file) {
+        console.log("Wuk2");
+
         return next(new Error("Wrong file type!"));
     }
+    console.log("Wuk3");
 
     let tempPost = JSON.parse(req.body.post);
+    console.log("Wuk4");
+
     let post = new Post(tempPost);
+    console.log("Wuk5");
 
     post.post_image_filename = req.file.filename;
+    console.log("Wuk6");
 
     let updateUserQuery = User.updateOne(
         {_id: post.user_id}, {"$push": {posts: post}}
     );
+    console.log("Wuk7");
 
     updateUserQuery.exec(function (err, post) {
         if (err) {
+            console.log("Wuk8");
+
             post.remove();
             return next(err);
         }
+        console.log("Wuk9");
 
         if (tempPost.post_image_filename) {
+            console.log("Wuk10");
+
             fileManager.removeFile(tempPost.post_image_filename, "images");
         }
+        console.log("Wuk1");
+
         res.json(post);
     });
 });
