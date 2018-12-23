@@ -104,6 +104,7 @@ router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single(
 });
 
 router.post('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
+    console.log(req);
     console.log("Wuk1");
     if (!req.file) {
         console.log("Wuk2");
