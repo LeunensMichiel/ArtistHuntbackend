@@ -45,12 +45,12 @@ const audioFileFilter = (req, file, cb) => {
 
 const imagefileFilter = (req, file, cb) => {
     if (
-        file.mimetype == 'image/jpg' ||
-        file.mimetype == 'image/jpeg' ||
-        file.mimetype == 'image/JPG' ||
-        file.mimetype == 'image/JPEG' ||
-        file.mimetype == 'image/PNG' ||
-        file.mimetype == 'image/png'
+        file.mimetype === 'image/jpg' ||
+        file.mimetype === 'image/jpeg' ||
+        file.mimetype === 'image/JPG' ||
+        file.mimetype === 'image/JPEG' ||
+        file.mimetype === 'image/PNG' ||
+        file.mimetype === 'image/png'
     ) {
         cb(null, true);
     }
