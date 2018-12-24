@@ -1,16 +1,16 @@
 let express = require('express');
 let router = express.Router();
+
+let jwt = require('express-jwt');
+let auth = jwt({secret: process.env.ARTISTHUNT_BACKEND_SECRET});
+let fileUploadMulter = require('../config/multer_config');
+let fileManager = require('../config/manage_files');
+
 let mongoose = require('mongoose');
-const multer = require('multer');
 
 let Post = mongoose.model('post');
 let User = mongoose.model('user');
 
-let jwt = require('express-jwt');
-let auth = jwt({secret: process.env.ARTISTHUNT_BACKEND_SECRET});
-
-let fileUploadMulter = require('../config/multer_config');
-let fileManager = require('../config/manage_files');
 
 router.param('post', function (req, res, next, id) {
     let query = Post.findById(id);
