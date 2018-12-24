@@ -103,7 +103,7 @@ router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single(
     });
 });
 
-router.post('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
+router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
     console.log("Wuk1");
     console.log(req.file);
     if (!req.file) {
