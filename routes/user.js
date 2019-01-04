@@ -1,14 +1,14 @@
 let express = require('express');
 let router = express.Router();
-let mongoose = require('mongoose');
 
 let jwt = require('express-jwt');
 let auth = jwt({secret: process.env.ARTISTHUNT_BACKEND_SECRET});
+let fileUploadMulter = require('../config/multer_config');
+let fileManager = require('../config/manage_files');
+
+let mongoose = require('mongoose');
 let validator = require("email-validator");
 let passport = require("passport");
-
-
-
 
 let User = mongoose.model('user');
 
@@ -94,6 +94,21 @@ router.param('user', function (req, res, next, id) {
         req.paramUser = user;
         return next();
     })
+});
+
+router.put('/user/:user/updateProfileImage', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
+    if (!req.file) {
+        return next(new Error("Wrong file type!"));
+    }
+    User.findByIdAndUpdate(req.paramUser._id, {$set: {"profile_image_filename": req.file.filename}}, function (err, user) {
+        if (err) {
+            return next(err);
+        }
+        if (req.body.user.profile_image_filename) {
+            fileManager.removeFile(req.body.user.profile_image_filename, "images");
+        }
+        res.json({'result': req.file.filename})
+    });
 });
 
 module.exports = router;
