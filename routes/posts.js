@@ -71,34 +71,23 @@ router.post('/post', auth, function (req, res, next) {
     })
 });
 
-router.post('/post/:post_with_audio', auth, fileUploadMulter.uploadAudio.single("file"), function (req, res, next) {
-    console.log("Wuk1");
+router.put('/post/audio', auth, fileUploadMulter.uploadAudio.single("file"), function (req, res, next) {
     if (!req.file) {
-        console.log("Wuk2");
         return next(new Error("Wrong file type!"));
     }
-    console.log("Wuk3");
     let postQuery = Post.findOneAndUpdate(
         {_id: req.params.post_with_audio},
         {$set: {"post_audio_filename": req.file.filename}},
         {new: true}
     );
-    console.log("Wuk4");
     postQuery.exec(function (err, post) {
         if (err) {
-            console.log("Wuk5");
             return next(err);
         }
-        console.log("Wuk6");
-
         let oldPost = JSON.parse(req.body.post);
-        console.log("Wuk7");
-
         if (oldPost.post_audio_filename) {
-            console.log("Wuk8");
             fileManager.removeFile(oldPost.post_audio_filename, "music");
         }
-
         res.json(post);
     });
 });
@@ -131,7 +120,21 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
             res.json(post);
         });
     });
+});
 
+router.post('/post/:post/updateLikers', auth, function (req, res, next) {
+    let post = req.post;
+    if (post.likers.contains(req.body.liker)) {
+        post.likers.pop(req.body.liker)
+    } else {
+        post.likers.push(req.body.liker)
+    }
+    post.save(function (err) {
+        if (err) {
+            return next(err);
+        }
+        res.json(req.body);
+    });
 });
 
 router.delete('/post/:post', auth, function (req, res, next) {
