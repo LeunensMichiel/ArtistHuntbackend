@@ -104,9 +104,9 @@ router.put('/user/:user/updateProfileImage', auth, fileUploadMulter.uploadPostIm
         if (err) {
             return next(err);
         }
-        if (req.body.user.profile_image_filename) {
-            fileManager.removeFile(req.body.user.profile_image_filename, "images");
-        }
+        // if (req.body.user.profile_image_filename) {
+        //     fileManager.removeFile(req.body.user.profile_image_filename, "images");
+        // }
         res.json({'data': req.file.filename})
     });
 });
