@@ -125,8 +125,10 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
 router.post('/post/:post/updateLikers', auth, function (req, res, next) {
     let post = req.post;
     if (post.likers.indexOf(req.body.liker) > -1) {
+        console.log("1");
         post.likers.pop(req.body.liker)
     } else {
+        console.log("2");
         post.likers.push(req.body.liker)
     }
     post.save(function (err) {

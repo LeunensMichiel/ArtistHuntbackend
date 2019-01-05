@@ -34,7 +34,8 @@ router.post('/register', function (req, res, next) {
             _id: user._id,
             firstname: user.firstname,
             lastname: user.lastname,
-            email: user.email
+            email: user.email,
+            profile_image_filename : user.profile_image_filename
         })
     });
 });
@@ -53,12 +54,12 @@ router.post('/login', function (req, res, next) {
         }
         if (user) {
             return res.json({
-                //Aangepast door Michiel op 30/11 om bugs proberen op te lossen van userInfo
                 token: user.generateJWT(),
                 _id: user._id,
                 firstname: user.firstname,
                 lastname: user.lastname,
-                email: user.email
+                email: user.email,
+                profile_image_filename : user.profile_image_filename
             });
         } else {
             return res.status(401).json(info);
