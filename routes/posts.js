@@ -96,10 +96,9 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
     if (!req.file) {
         return next(new Error("Wrong file type!"));
     }
-    let tempPost = JSON.parse(req.body.post);
+    let tempPost = JSON.parse(req.body);
     let post = new Post(tempPost);
     post.post_image_filename = req.file.filename;
-
     post.save(function (err, post) {
         if (err) {
             console.log(err);
