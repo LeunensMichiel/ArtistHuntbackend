@@ -112,18 +112,18 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
 
         console.log("test3" + post);
         updateUserQuery.exec(function (err, postie) {
-            console.log("test4" + post);
+            console.log("test4" + postie);
             if (err) {
                 console.log("test5" + err.message);
-                postie.remove();
+                post.remove();
                 return next(err);
             }
             if (tempPost.post_image_filename) {
                 console.log("test6" + post);
                 fileManager.removeFile(tempPost.post_image_filename, "images");
             }
-            console.log("test7" + postie);
-            res.json(postie);
+            console.log("test7" + post);
+            res.json(post);
         });
     });
 });

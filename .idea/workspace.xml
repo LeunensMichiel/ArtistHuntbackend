@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2a6c8c45-4643-4866-80cc-68870538d495" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -90,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="107" column="29" lean-forward="true" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+            <state relative-caret-position="326">
+              <caret line="121" column="44" lean-forward="true" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -132,7 +131,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="y" value="24" />
-    <option name="width" value="1144" />
+    <option name="width" value="1379" />
     <option name="height" value="1116" />
   </component>
   <component name="ProjectView">
@@ -219,7 +218,7 @@
       <workItem from="1545062302482" duration="45000" />
       <workItem from="1545062348391" duration="30000" />
       <workItem from="1545062385819" duration="39608000" />
-      <workItem from="1546615554339" duration="11572000" />
+      <workItem from="1546615554339" duration="13975000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1545062469889</created>
@@ -340,11 +339,46 @@
       <option name="project" value="LOCAL" />
       <updated>1546756076545</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added some console logs to check on server">
+      <created>1546785038648</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1546785038648</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added some console logs to check on server v2">
+      <created>1546785361349</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1546785361349</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added some console logs to check on server v3">
+      <created>1546785415079</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1546785415079</updated>
+    </task>
+    <task id="LOCAL-00021" summary="added some console logs to check on server v4">
+      <created>1546785643167</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1546785643167</updated>
+    </task>
+    <task id="LOCAL-00022" summary="added some console logs to check on server v5">
+      <created>1546785859312</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1546785859312</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51255000" />
+    <option name="totallyTimeSpent" value="53658000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -356,9 +390,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1144" height="1116" extended-state="0" />
+    <frame x="0" y="24" width="1379" height="1116" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18165627" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15022092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -369,8 +403,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32925585" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32925585" />
-      <window_info anchor="bottom" x="870" y="95" width="973" height="926" id="Terminal" order="9" weight="0.25076452" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32925585" />
+      <window_info active="true" anchor="bottom" x="870" y="95" width="973" height="926" id="Terminal" order="9" visible="true" weight="0.34352702" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -443,7 +477,12 @@
     <MESSAGE value="fixed bug where adding a image post would return a null json" />
     <MESSAGE value="fixed bug where adding a image post would return a null json v2" />
     <MESSAGE value="fixed bug where adding a image post would return a null json v3" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug where adding a image post would return a null json v3" />
+    <MESSAGE value="added some console logs to check on server" />
+    <MESSAGE value="added some console logs to check on server v2" />
+    <MESSAGE value="added some console logs to check on server v3" />
+    <MESSAGE value="added some console logs to check on server v4" />
+    <MESSAGE value="added some console logs to check on server v5" />
+    <option name="LAST_COMMIT_MESSAGE" value="added some console logs to check on server v5" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/routes/index.js" />
@@ -552,8 +591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="107" column="29" lean-forward="true" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+        <state relative-caret-position="326">
+          <caret line="121" column="44" lean-forward="true" selection-start-line="121" selection-start-column="44" selection-end-line="121" selection-end-column="44" />
         </state>
       </provider>
     </entry>
