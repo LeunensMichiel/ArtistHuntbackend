@@ -115,7 +115,7 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
             console.log("test4" + post);
             if (err) {
                 console.log("test5" + err.message);
-                post.remove();
+                postie.remove();
                 return next(err);
             }
             if (tempPost.post_image_filename) {
@@ -123,7 +123,7 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
                 fileManager.removeFile(tempPost.post_image_filename, "images");
             }
             console.log("test7" + post);
-            res.json(post);
+            res.json(postie);
         });
     });
 });
