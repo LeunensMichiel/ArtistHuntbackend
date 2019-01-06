@@ -111,7 +111,7 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
         );
 
         console.log("test3" + post);
-        updateUserQuery.exec(function (err, post) {
+        updateUserQuery.exec(function (err, postie) {
             console.log("test4" + post);
             if (err) {
                 console.log("test5" + post);
