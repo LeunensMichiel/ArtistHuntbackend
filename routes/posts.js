@@ -122,7 +122,7 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
                 console.log("test6" + post);
                 fileManager.removeFile(tempPost.post_image_filename, "images");
             }
-            console.log("test7" + post);
+            console.log("test7" + postie);
             res.json(postie);
         });
     });
