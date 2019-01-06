@@ -50,8 +50,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="86" column="37" lean-forward="true" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
+            <state relative-caret-position="17">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
             </state>
           </provider>
         </entry>
@@ -68,8 +68,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-459">
+            <state relative-caret-position="345">
               <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/images/images.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor>
+                <caret column="41" selection-start-column="41" selection-end-column="41" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -77,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/posts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="131" selection-end-column="16" />
+            <state relative-caret-position="-6">
+              <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -111,8 +123,8 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/models/user.js" />
         <option value="$PROJECT_DIR$/models/post.js" />
-        <option value="$PROJECT_DIR$/routes/user.js" />
         <option value="$PROJECT_DIR$/routes/posts.js" />
+        <option value="$PROJECT_DIR$/routes/user.js" />
       </list>
     </option>
   </component>
@@ -205,7 +217,7 @@
       <workItem from="1545062302482" duration="45000" />
       <workItem from="1545062348391" duration="30000" />
       <workItem from="1545062385819" duration="39608000" />
-      <workItem from="1546615554339" duration="5562000" />
+      <workItem from="1546615554339" duration="7343000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1545062469889</created>
@@ -298,11 +310,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545608287344</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="fixed small profile picture bug">
+      <created>1546730382251</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1546730382251</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45245000" />
+    <option name="totallyTimeSpent" value="47026000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1144" height="1116" extended-state="0" />
@@ -320,7 +339,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" x="870" y="95" width="973" height="926" id="Terminal" order="9" visible="true" weight="0.3761468" />
+      <window_info anchor="bottom" x="870" y="95" width="973" height="926" id="Terminal" order="9" weight="0.3761468" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -363,7 +382,8 @@
     <MESSAGE value="Wuk" />
     <MESSAGE value="files" />
     <MESSAGE value="I have no idea what I'm doing" />
-    <option name="LAST_COMMIT_MESSAGE" value="I have no idea what I'm doing" />
+    <MESSAGE value="fixed small profile picture bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed small profile picture bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/routes/index.js" />
@@ -380,16 +400,6 @@
         <state split_layout="SPLIT">
           <first_editor>
             <caret column="39" selection-start-column="39" selection-end-column="39" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/images/images.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="41" selection-start-column="41" selection-end-column="41" />
           </first_editor>
           <second_editor />
         </state>
@@ -449,20 +459,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-459">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="86" column="37" lean-forward="true" selection-start-line="86" selection-start-column="37" selection-end-line="86" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/post.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -470,10 +466,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/images.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="41" selection-start-column="41" selection-end-column="41" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/posts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="131" column="16" selection-start-line="131" selection-start-column="16" selection-end-line="131" selection-end-column="16" />
+        <state relative-caret-position="-6">
+          <caret line="68" column="25" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
         </state>
       </provider>
     </entry>

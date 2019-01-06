@@ -93,7 +93,6 @@ router.put('/post/audio', auth, fileUploadMulter.uploadAudio.single("file"), fun
 });
 
 router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"), function (req, res, next) {
-    console.log(req.file);
     if (!req.file) {
         return next(new Error("Wrong file type!"));
     }
@@ -109,7 +108,7 @@ router.put('/post/image', auth, fileUploadMulter.uploadPostImage.single("file"),
         let updateUserQuery = User.updateOne(
             {_id: post.user_id}, {"$push": {posts: post}}
         );
-        updateUserQuery.exec(function (err, post) {
+        updateUserQuery.exec(function (err) {
             if (err) {
                 post.remove();
                 return next(err);
